@@ -250,7 +250,7 @@ Shader "URPNotes/Lambert"
 
                     float rimMask = smoothstep(0, _RimThreshold, depthDiff);
 
-                    float4 shadowColor = rampShadow;
+                    
                     half4 rim = rimMask * _RimColor * IN.vertColor * baseColor * step(0.1, lightMap.g);
                    
                     half4 final = half4(emission,1)+diffuse +specular+rim ;
