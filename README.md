@@ -1,2 +1,2 @@
 # GenshinLikeRending
-My GenshinLike CharacterRending based on Unity
+My GenshinLike CharacterRending based on Unity URP
