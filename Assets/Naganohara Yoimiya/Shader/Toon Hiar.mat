@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Toon Hiar
+  m_Shader: {fileID: 4800000, guid: 590039a5a3e051841b6526faebbb313b, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _LightMap:
+        m_Texture: {fileID: 2800000, guid: 228c9d9ac1accdf418974b0b8f883de4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: c02bcad416d83504eb64e96c29961bd9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetalMap:
+        m_Texture: {fileID: 2800000, guid: 4ef2b91452befc5478b57f3778107d07, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ShadowRampMap:
+        m_Texture: {fileID: 2800000, guid: ac4f8e44876429e4c9233cc22c0e2f47, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _BodyShadowSmooth: 0.72
+    - _HairAccGroveBaseline: 0.6
+    - _HairDarkShadowArea: -0.065
+    - _HairDarkShadowSmooth: -0.521
+    - _HairRange: 0.19
+    - _HairShadowSmooth: 0
+    - _HairSmoothShadowIntensity: 1.92
+    - _HairSpecAreaBaseline: 0.01343
+    - _HairViewSpecularIntensity: 0.55
+    - _HairViewSpecularThreshold: 0.484
+    - _HairshadowRange: 2
+    - _InNight: 0
+    - _MetalIntensity: 1
+    - _PatternRange: 0.9
+    - _PatternRangeIntensity: 1
+    - _RimThreshold: 500
+    - _RimWidth: 0.005
+    - _ShadowOffset: 0
+    - _StrokeRange: 0.3
+    - _StrokeRangeIntensity: 1
+    m_Colors:
+    - _RimColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []

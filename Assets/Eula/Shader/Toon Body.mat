@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Toon Body
+  m_Shader: {fileID: 4800000, guid: edf4cbfc98443e845a5111b8cf793759, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _LightMap:
+        m_Texture: {fileID: 2800000, guid: 668eb8a3dcc346043ae066ac2e7cc76c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 75c867e8002d8af4ab0413bcd9cca238, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetalMap:
+        m_Texture: {fileID: 2800000, guid: b52d650fcc866be41a5e229c00d7948a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ShadowRampMap:
+        m_Texture: {fileID: 2800000, guid: 35395f2e2402da3498c2a3a689ff52cf, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _BodyShadowSmooth: 0
+    - _EmissionIntensity: 3.26
+    - _InNight: 0
+    - _MetalIntensity: 1
+    - _OutlineWidth: 2.55
+    - _PatternRange: 0.25
+    - _PatternRangeIntensity: 1.41
+    - _RimThreshold: 500
+    - _RimWidth: 0.005
+    - _StrokeRange: 0.0283
+    - _StrokeRangeIntensity: 2.42
+    m_Colors:
+    - _OutlineColor: {r: 0.066037714, g: 0.066037714, b: 0.066037714, a: 1}
+    - _RimColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
