@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "54TIO/qKV15KYZZ7QnPI7jueZsHbM6vcyHRlY4Zd9FGcAO/nXyJjeDmXUNTMmmF+IPTfizeaMJnkgOxv7f6zYA==",
+  "dgSpecHash": "vcA43ym+Jd3ewv8SbrXKMLEgYRsjLpiuKyUy53xAohvf1OiC+I4xmMRyDFBeaQoL291Sig9vUOYDRafBPUPAtQ==",
   "success": true,
-  "projectFilePath": "c:\\Users\\FryAou\\GenshinLike CharacterRending\\Cyanilux.BlitRenderFeature.Editor.csproj",
+  "projectFilePath": "c:\\Users\\FryAou\\GenshinLike CharacterRending\\Assembly-CSharp-Editor.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

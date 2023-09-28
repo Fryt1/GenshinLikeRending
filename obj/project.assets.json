@@ -2,6 +2,20 @@
   "version": 3,
   "targets": {
     ".NETStandard,Version=v2.1": {
+      "Assembly-CSharp/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "dependencies": {
+          "Cyanilux.BlitRenderFeature": "1.0.0",
+          "Cyanilux.BlitRenderFeature.Editor": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Assembly-CSharp.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Assembly-CSharp.dll": {}
+        }
+      },
       "Cyanilux.BlitRenderFeature/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
@@ -11,19 +25,44 @@
         "runtime": {
           "bin/placeholder/Cyanilux.BlitRenderFeature.dll": {}
         }
+      },
+      "Cyanilux.BlitRenderFeature.Editor/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "dependencies": {
+          "Cyanilux.BlitRenderFeature": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Cyanilux.BlitRenderFeature.Editor.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Cyanilux.BlitRenderFeature.Editor.dll": {}
+        }
       }
     }
   },
   "libraries": {
+    "Assembly-CSharp/1.0.0": {
+      "type": "project",
+      "path": "Assembly-CSharp.csproj",
+      "msbuildProject": "Assembly-CSharp.csproj"
+    },
     "Cyanilux.BlitRenderFeature/1.0.0": {
       "type": "project",
       "path": "Cyanilux.BlitRenderFeature.csproj",
       "msbuildProject": "Cyanilux.BlitRenderFeature.csproj"
+    },
+    "Cyanilux.BlitRenderFeature.Editor/1.0.0": {
+      "type": "project",
+      "path": "Cyanilux.BlitRenderFeature.Editor.csproj",
+      "msbuildProject": "Cyanilux.BlitRenderFeature.Editor.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.1": [
-      "Cyanilux.BlitRenderFeature >= 1.0.0"
+      "Assembly-CSharp >= 1.0.0",
+      "Cyanilux.BlitRenderFeature >= 1.0.0",
+      "Cyanilux.BlitRenderFeature.Editor >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -33,9 +72,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\FryAou\\GenshinLike CharacterRending\\Cyanilux.BlitRenderFeature.Editor.csproj",
-      "projectName": "Cyanilux.BlitRenderFeature.Editor",
-      "projectPath": "c:\\Users\\FryAou\\GenshinLike CharacterRending\\Cyanilux.BlitRenderFeature.Editor.csproj",
+      "projectUniqueName": "c:\\Users\\FryAou\\GenshinLike CharacterRending\\Assembly-CSharp-Editor.csproj",
+      "projectName": "Assembly-CSharp-Editor",
+      "projectPath": "c:\\Users\\FryAou\\GenshinLike CharacterRending\\Assembly-CSharp-Editor.csproj",
       "packagesPath": "C:\\Users\\FryAou\\.nuget\\packages\\",
       "outputPath": "c:\\Users\\FryAou\\GenshinLike CharacterRending\\obj\\",
       "projectStyle": "PackageReference",
@@ -58,8 +97,14 @@
         "netstandard2.1": {
           "targetAlias": "netstandard2.1",
           "projectReferences": {
+            "c:\\Users\\FryAou\\GenshinLike CharacterRending\\Assembly-CSharp.csproj": {
+              "projectPath": "c:\\Users\\FryAou\\GenshinLike CharacterRending\\Assembly-CSharp.csproj"
+            },
             "c:\\Users\\FryAou\\GenshinLike CharacterRending\\Cyanilux.BlitRenderFeature.csproj": {
               "projectPath": "c:\\Users\\FryAou\\GenshinLike CharacterRending\\Cyanilux.BlitRenderFeature.csproj"
+            },
+            "c:\\Users\\FryAou\\GenshinLike CharacterRending\\Cyanilux.BlitRenderFeature.Editor.csproj": {
+              "projectPath": "c:\\Users\\FryAou\\GenshinLike CharacterRending\\Cyanilux.BlitRenderFeature.Editor.csproj"
             }
           }
         }
