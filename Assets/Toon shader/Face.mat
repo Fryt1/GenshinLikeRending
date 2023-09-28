@@ -7,11 +7,12 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Toon Hiar
-  m_Shader: {fileID: 4800000, guid: 590039a5a3e051841b6526faebbb313b, type: 3}
+  m_Name: Face
+  m_Shader: {fileID: 4800000, guid: 3812ef8f1b7076c478e464c85e661e37, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _Face
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -24,44 +25,43 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _LightMap:
-        m_Texture: {fileID: 2800000, guid: 228c9d9ac1accdf418974b0b8f883de4, type: 3}
+        m_Texture: {fileID: 2800000, guid: b53ba402b3e1e4c4c941d4a17edb7af5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: c02bcad416d83504eb64e96c29961bd9, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7e8b51c2743a40e4a81c4889fb9e720a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetalMap:
-        m_Texture: {fileID: 2800000, guid: 4ef2b91452befc5478b57f3778107d07, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ShadowRampMap:
-        m_Texture: {fileID: 2800000, guid: ac4f8e44876429e4c9233cc22c0e2f47, type: 3}
+        m_Texture: {fileID: 2800000, guid: 19b74486b7287544d8bb9cc44641765c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BodyShadowSmooth: 0.72
+    - _BodyShadowSmooth: 0.484
+    - _EmissionIntensity: 1
     - _HairAccGroveBaseline: 0.6
     - _HairDarkShadowArea: -0.065
-    - _HairDarkShadowSmooth: -0.521
-    - _HairRange: 0.19
+    - _HairDarkShadowSmooth: -0.5
+    - _HairRange: 0.13
     - _HairShadowSmooth: 0
-    - _HairSmoothShadowIntensity: 1.92
-    - _HairSpecAreaBaseline: 0.01343
-    - _HairViewSpecularIntensity: 0.55
-    - _HairViewSpecularThreshold: 0.484
-    - _HairshadowRange: 2
+    - _HairSmoothShadowIntensity: 1
+    - _HairSpecAreaBaseline: 0.5
+    - _HairViewSpecularIntensity: 0
+    - _HairViewSpecularThreshold: 0.05
     - _InNight: 0
     - _MetalIntensity: 1
     - _PatternRange: 0.9
     - _PatternRangeIntensity: 1
     - _RimThreshold: 500
     - _RimWidth: 0.005
-    - _ShadowOffset: 0
     - _StrokeRange: 0.3
     - _StrokeRangeIntensity: 1
-    - _range: 0
+    - _range: 0.407
     m_Colors:
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

@@ -47,6 +47,8 @@ Shader "CustShader/GenshinLike"
 
         _HairViewSpecularIntensity("头发整体高光强度*",Range(0,5))=0
 
+         _range("阴影色号",Range(0,0.5)) = 0
+
          
         
     }
@@ -114,6 +116,8 @@ Shader "CustShader/GenshinLike"
 
                 half _HairViewSpecularIntensity;
 
+                 half _range;
+
                 CBUFFER_END
 
                 TEXTURE2D(_MainTex);
@@ -150,6 +154,7 @@ Shader "CustShader/GenshinLike"
                     float4 posDNC: TEXCOORD4;
                     float4 posVS : TEXCOORD5;
                     float4 nDirVS: TEXCOORD6;
+                    half3 worldNormal:TEXCOORD0;
                 };
                   //获得高光指数p
                 float RoughnessToSpecularExponent(float roughness){
@@ -193,6 +198,26 @@ Shader "CustShader/GenshinLike"
                     o.vertColor = v.vertColor;
 
                     o.vDirWS  = -normalize (worldPos - GetCameraPositionWS().xyz); 
+                    #endif
+
+                    #if defined(_Face)
+                    o.pos = TransformObjectToHClip(v.vertex.xyz);           //将顶点转换到裁剪空间，这步是顶点着色器必做的事情，否则
+                                                                            //渲染后模型会错位。
+                    o.worldNormal = TransformObjectToWorldNormal(v.normal); //将法线切换到世界空间下，注意normal是方向
+
+                    o.uv = TRANSFORM_TEX(v.uv,_MainTex);  
+
+                    float4 ndc = o.pos *0.5f;
+
+                    o.posDNC.xy = float2(ndc.x, ndc.y*_ProjectionParams.x)+ ndc.w;
+
+                    o.posDNC.zw = o.pos.zw;
+
+                    o.posVS  = mul(UNITY_MATRIX_MV, v.vertex);
+
+                    o.nDirVS = normalize(mul(UNITY_MATRIX_IT_MV, v.normal));
+
+                    o.vertColor = v.vertColor;
                     #endif
                     return o;
                 }
@@ -356,12 +381,89 @@ Shader "CustShader/GenshinLike"
                     half4 rim = rimMask * _RimColor * IN.vertColor * baseColor * step(0.1, lightMap.g);
                     #endif
 
+                    //Face Frag
+                    #if defined(_Face)
+                    Light mlight = GetMainLight();                                  //获取主光源的数据 
+                    float3 LDir = normalize(mlight.direction); 
+
+                    float3 mainLightColor = mlight.color.rgb;
+
+                    float4 baseColor = SAMPLE_TEXTURE2D(_MainTex,sampler_MainTex,IN.uv);
+
+                    float4 lightMap = SAMPLE_TEXTURE2D(_LightMap,sampler_LightMap,IN.uv);
+
+
+                    half dayOrNight = (1 - step(0.1, _InNight)) * 0.5 + 0.03;
+                    //漫反射diffuse: SDF阴影
+                    //人物朝向 Get character orientation
+                    float3 up = float3(0,1,0);  
+                    float3 front = TransformObjectToWorldDir(float4(0.0,0.0,1.0,1.0)).rgb;
+                    float3 right = cross(up, front);
+
+                    //左右阴影图 Sample flipped face light map
+                    float2 rightFaceUV = float2(-IN.uv.x, IN.uv.y);
+                    float4 faceShadowR = SAMPLE_TEXTURE2D(_LightMap, sampler_LightMap, rightFaceUV);
+                    float4 faceShadowL = lightMap;
+
+                    //灯光朝向和灯光vector不一致，逆时针转90，投影后要归一化，不然长度会小于1
+                    float s = sin(90 * (PI/180.0f));
+                    float c = cos(90 * (PI/180.0f));
+                    float2x2 rMatrix = float2x2(c, -s, s, c);    
+                    float2 realLDir = normalize(mul(rMatrix,LDir.xz));
+
+                    float realFDotL = dot(normalize(front.xz), realLDir);
+                    
+                    float realRDotL =  dot(normalize(right.xz), realLDir);
+                    realRDotL = -(acos(realRDotL)/3.14159265 - 0.5)*2;
+
+                    //通过RdotL决定用哪张阴影图
+                    float shadowTex = realRDotL < 0? faceShadowL: faceShadowR;
+                    //获取当前像素的阴影阈值
+                    float shadowMargin = shadowTex.r;
+                    //判断是否在阴影中
+                    float inShadow =  -0.5 * realFDotL + 0.5 < shadowMargin;
+
+                    //采样阴影ramp颜色图
+                    float2 shadowUV = float2(inShadow * mlight.shadowAttenuation - 0.06, _range + dayOrNight);
+                    half3 faceShadowColor = SAMPLE_TEXTURE2D(_ShadowRampMap, sampler_ShadowRampMap, shadowUV);
+                    half3 diffusergb = lerp(faceShadowColor, mainLightColor, inShadow) * baseColor ;
+                    half4 diffuse =half4(diffusergb,1);
+                    float Lambert = max(0,dot(LDir,IN.worldNormal));
+
+                    //边缘光Rim: 屏幕空间深度边缘光
+                    float3 nonHomogeneousCoord = IN.posDNC.xyz / IN.posDNC.w;
+                    float2 screenUV = nonHomogeneousCoord.xy;
+                    // 保持z不变即可
+                    float3 offsetPosVS = float3(IN.posVS.xy + IN.nDirVS.xy * _RimWidth, IN.posVS.z);
+                    float4 offsetPosCS = TransformWViewToHClip(offsetPosVS);
+                    float4 offsetPosVP = TransformHClipToViewPortPos(offsetPosCS);
+
+                    float depth = SampleSceneDepth(screenUV); 
+                    float linearEyeDepth = LinearEyeDepth(depth, _ZBufferParams); // 离相机越近越大
+
+                    float offsetDepth = SampleSceneDepth(offsetPosVP);
+                    float linearEyeOffsetDepth = LinearEyeDepth(offsetDepth, _ZBufferParams);
+
+                    float depthDiff = linearEyeOffsetDepth - linearEyeDepth;
+
+                    float rimMask = smoothstep(0, _RimThreshold, depthDiff);
+
+
+                    half4 rim = rimMask * _RimColor * IN.vertColor * baseColor * step(0.1, lightMap.g);
+                    #endif
+
                     #if defined(_Body)
                         half4 final = emission + diffuse +specular+rim ;
-                    #else
-                        half4 final = diffuse +specular+rim ;
+                    #endif
+                    #if defined(_Hair)
+                        half4 final = diffuse  + specular+rim ;
 
                     #endif
+
+                    #if defined(_Face)
+                        half4 final = diffuse + rim ;
+                    #endif
+
 
 
                     return final  ;            //将表面颜色，漫反射强度和光源强度混合。

@@ -23,7 +23,7 @@ Shader "URPNotes/Lambert"
 
         _RimWidth("光圈宽度",Range(0,5)) = 1
 
-         _RimThreshold("深度差判定是否有rim",Range(0,100000)) = 1
+        _RimThreshold("深度差判定是否有rim",Range(0,100000)) = 1
 
          _RimColor("边缘光颜色",Color) = (1,1,1,1)
 

@@ -37,6 +37,8 @@ Shader "URPNotes/Lambert"
         _RimThreshold("深度差判定是否有rim",Range(0,100000)) = 500
 
          _RimColor("边缘光颜色",Color) = (1,1,1,1)
+
+
         
 
     }
@@ -80,8 +82,6 @@ Shader "URPNotes/Lambert"
                 half _HairShadowSmooth;
 
 
-               
-
 
 
                 half _HairViewSpecularThreshold;
@@ -97,6 +97,8 @@ Shader "URPNotes/Lambert"
                 half  _RimThreshold;
 
                 vector _RimColor;
+
+
 
 
        

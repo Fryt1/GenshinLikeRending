@@ -7,11 +7,12 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Toon Hiar
-  m_Shader: {fileID: 4800000, guid: 590039a5a3e051841b6526faebbb313b, type: 3}
+  m_Name: Hair
+  m_Shader: {fileID: 4800000, guid: 3812ef8f1b7076c478e464c85e661e37, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _Hair
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -42,6 +43,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _BodyShadowSmooth: 0.72
+    - _EmissionIntensity: 1
     - _HairAccGroveBaseline: 0.6
     - _HairDarkShadowArea: -0.065
     - _HairDarkShadowSmooth: -0.521
@@ -51,14 +53,12 @@ Material:
     - _HairSpecAreaBaseline: 0.01343
     - _HairViewSpecularIntensity: 0.55
     - _HairViewSpecularThreshold: 0.484
-    - _HairshadowRange: 2
     - _InNight: 0
     - _MetalIntensity: 1
     - _PatternRange: 0.9
     - _PatternRangeIntensity: 1
     - _RimThreshold: 500
     - _RimWidth: 0.005
-    - _ShadowOffset: 0
     - _StrokeRange: 0.3
     - _StrokeRangeIntensity: 1
     - _range: 0

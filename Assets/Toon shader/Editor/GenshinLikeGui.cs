@@ -25,6 +25,7 @@ public class GenshinLikeGui : ShaderGUI {
         CharacterPart source = CharacterPart.Body;
         if (IsKeywordEnabled("_Body")) {
 			source = CharacterPart.Body;
+			
 		}
         else if (IsKeywordEnabled("_Hair")) {
 			source = CharacterPart.Hair;
@@ -53,63 +54,115 @@ public class GenshinLikeGui : ShaderGUI {
 				"_Face", source == CharacterPart.Face
 			);
 		}
+		switchpart();
+		
     }
 
-    void DoMain() {
-		GUILayout.Label("Main Maps", EditorStyles.boldLabel);
+	void DoMain(){
+		SwitchKeword();
 
-        DoMainTex();
-        DoLightMap();
-        DoMetalMap();
-        DoShadowRampMap();
-        Dolambertshadow();
-        DoDayorNight();
-        SwitchKeword();
-	}
-    void DoLightMap() {
-        MaterialProperty LightMap = FindProperty("_LightMap");
-
-        //editor.TextureScaleOffsetProperty(LightMap);
-
-		editor.TexturePropertySingleLine(MakeLabel(LightMap), LightMap);
-        
-	}
-    void DoMainTex() {
-        MaterialProperty mainTex = FindProperty("_MainTex");
-
-		editor.TexturePropertySingleLine(MakeLabel(mainTex), mainTex);
-
-        editor.TextureScaleOffsetProperty(mainTex);
-	}
-    void DoMetalMap() {
-        MaterialProperty  MetalMap = FindProperty("_MetalMap");
-
-		editor.TexturePropertySingleLine(MakeLabel( MetalMap),  MetalMap);
-
-        //editor.TextureScaleOffsetProperty(mainTex);
-	}
-    void DoShadowRampMap() {
-        MaterialProperty  ShadowRampMap = FindProperty("_ShadowRampMap");
-
-		editor.TexturePropertySingleLine(MakeLabel(ShadowRampMap),  ShadowRampMap);
-        
-
-        //editor.TextureScaleOffsetProperty(mainTex);
+		
 	}
 
-    void Dolambertshadow()
-    {
-        MaterialProperty lambert = FindProperty("_BodyShadowSmooth");
+	void switchpart()
+	{
+		CharacterPart source = CharacterPart.Body;
+        if (IsKeywordEnabled("_Body")) {
+			source = CharacterPart.Body;
+			DoBodyMain();	
+		}
+        else if (IsKeywordEnabled("_Hair")) {
+			source = CharacterPart.Hair;
+			DoHairMain();
+		}
+		else if (IsKeywordEnabled("_Face")) {
+			source = CharacterPart.Face;
+			DoFaceMain();
+		}
 
-        editor.ShaderProperty(lambert, MakeLabel(lambert));
-    }
+	}
 
-        void DoDayorNight()
-    {
-        MaterialProperty DayorNight = FindProperty("_InNight");
+    void DoBodyMain() {
+		GUILayout.Label("Texture", EditorStyles.boldLabel);
+		//texture
+        DoTexture("_MainTex");
+        DoTexture("_LightMap");
+        DoTexture("_MetalMap");
+        DoTexture("_ShadowRampMap");
+		//value
+		GUILayout.Label("Value", EditorStyles.boldLabel);
+        DOValue("_BodyShadowSmooth");
+        DOValue("_InNight");
+		DOValue("_StrokeRange");
+		DOValue("_StrokeRangeIntensity");
+        DOValue("_PatternRange");
+		DOValue("_PatternRangeIntensity");
+		DOValue("_MetalIntensity");
+		DOValue("_EmissionIntensity");
+        DOValue("_RimWidth");
+		DOValue("_RimThreshold");
+		DOValue("_RimColor");
+		
 
-        editor.ShaderProperty(DayorNight, MakeLabel(DayorNight));
-    }
+	}
+	void DoHairMain() {
+		GUILayout.Label("Texture", EditorStyles.boldLabel);
+		//texture
+        DoTexture("_MainTex");
+        DoTexture("_LightMap");
+        DoTexture("_MetalMap");
+        DoTexture("_ShadowRampMap");
+		//value
+		GUILayout.Label("Value", EditorStyles.boldLabel);
+        DOValue("_BodyShadowSmooth");
+        DOValue("_InNight");
+		DOValue("_HairDarkShadowSmooth");
+		DOValue("_HairDarkShadowArea");
+        DOValue("_HairShadowSmooth");
+		DOValue("_HairSmoothShadowIntensity");
+		DOValue("_HairRange");
+		DOValue("_HairViewSpecularThreshold");
+        DOValue("_HairSpecAreaBaseline");
+		DOValue("_HairAccGroveBaseline");
+		DOValue("_HairViewSpecularIntensity");
+        DOValue("_RimWidth");
+		DOValue("_RimThreshold");
+		DOValue("_RimColor");
+		
+
+	}
+	void DoFaceMain()
+	{
+		GUILayout.Label("Texture", EditorStyles.boldLabel);
+		//texture
+        DoTexture("_MainTex");
+        DoTexture("_LightMap");
+        DoTexture("_ShadowRampMap");
+		GUILayout.Label("Value", EditorStyles.boldLabel);
+		DOValue("_InNight");
+        DOValue("_RimWidth");
+		DOValue("_RimThreshold");
+		DOValue("_RimColor");
+		DOValue("_range");
+	}
+
+void DoTexture(string name){
+    MaterialProperty Map = FindProperty(name);
+
+    // 使用TextureProperty方法显示默认的纹理选择框
+    editor.TextureProperty(Map, MakeLabel(Map).text);
+}
+
+
+
+	void DOValue(string value)
+	{
+		MaterialProperty Value= FindProperty(value);
+
+        editor.ShaderProperty(Value, MakeLabel(Value));
+
+	}
+
     
     MaterialProperty FindProperty (string name) {
 		return FindProperty(name, properties);

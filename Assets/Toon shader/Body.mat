@@ -7,12 +7,12 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Toon Shader
+  m_Name: Body
   m_Shader: {fileID: 4800000, guid: 3812ef8f1b7076c478e464c85e661e37, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _Hair
+  - _Body
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -25,25 +25,25 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _LightMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 8182a6686c369f64299ec50404eee066, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 7e8b51c2743a40e4a81c4889fb9e720a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetalMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 4ef2b91452befc5478b57f3778107d07, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ShadowRampMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 19b74486b7287544d8bb9cc44641765c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BodyShadowSmooth: 0.424
-    - _EmissionIntensity: 1
+    - _BodyShadowSmooth: 0.025
+    - _EmissionIntensity: 3.26
     - _HairAccGroveBaseline: 0.6
     - _HairDarkShadowArea: -0.065
     - _HairDarkShadowSmooth: -0.5
@@ -53,14 +53,15 @@ Material:
     - _HairSpecAreaBaseline: 0.5
     - _HairViewSpecularIntensity: 0
     - _HairViewSpecularThreshold: 0.05
-    - _InNight: 0.1148
-    - _MetalIntensity: 1
-    - _PatternRange: 0.9
-    - _PatternRangeIntensity: 1
-    - _RimThreshold: 1
-    - _RimWidth: 1
-    - _StrokeRange: 0.3
-    - _StrokeRangeIntensity: 1
+    - _InNight: 0
+    - _MetalIntensity: 3.74
+    - _PatternRange: 0.799
+    - _PatternRangeIntensity: 2.98
+    - _RimThreshold: 500
+    - _RimWidth: 0.005
+    - _StrokeRange: 0.32
+    - _StrokeRangeIntensity: 2.96
+    - _range: 0
     m_Colors:
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

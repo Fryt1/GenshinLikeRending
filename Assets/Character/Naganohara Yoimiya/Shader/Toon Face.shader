@@ -16,7 +16,7 @@ Shader "URPNotes/Lambert"
 
          _RimColor("边缘光颜色",Color) = (1,1,1,1)
         
-        _range("RAMP色号",Range(0,0.5)) = 0
+        _range("阴影色号",Range(0,0.5)) = 0
 
     }
     SubShader
